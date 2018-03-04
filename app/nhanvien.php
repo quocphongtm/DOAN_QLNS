@@ -9,6 +9,6 @@ class nhanvien extends Model
     protected $table = "nhanvien";
 
     public function nguoidung(){
-        return $this->belongsTo('App\nhanvien','idnv','idnv');
+        return $this->belongsTo('App\nguoidung','idnv','idnv');
     } 
 }
