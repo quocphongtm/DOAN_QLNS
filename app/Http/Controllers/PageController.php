@@ -10,11 +10,16 @@ class PageController extends Controller
     	return view('page.trangchu');
     }
     public function getNhanVien(){
-        $nhanvien = nhanvien::all();
-        
-    	return view('page.nhanvien',compact('nhanvien'));
+        $nhanVien = nhanvien::all();
+    	return view('page.nhanvien',compact('nhanVien'));
     }
     public function getProfile(){ 
     	return view('page.profile');
+    }
+    public function getDangNhap(){
+        return view('page.dangnhap');
+    }
+    public function getThemNhanVien(){
+        return view('page.themnhanvien');
     }
 }

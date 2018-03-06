@@ -26,3 +26,14 @@ Route::get('profile',[
 	'as'=>'profile',
 	'uses'=>'PageController@getProfile'
 ]);
+Route::get('themnhanvien',[
+	'as'=>'themnhanvien',
+	'uses'=>'PageController@getThemNhanVien'
+]);
+
+//auth
+Route::get('dangnhap',[
+	'as'=>'profile',
+	'uses'=>'PageController@getDangNhap'
+]);
+Route::post('dangnhap','AuthController@login')->name('login');
