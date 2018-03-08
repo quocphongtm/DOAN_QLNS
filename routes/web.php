@@ -14,22 +14,33 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix'=>'nhanvien'],function(){
+	Route::get('danhsach',[
+	'as'=>'nhan-vien',
+	'uses'=>'NhanVienController@getNhanVien'
+	]);
+	Route::get('profile/{id}',[
+		'as'=>'profile',
+		'uses'=>'NhanVienController@getProfile'
+	]);
+	Route::get('themnhanvien',[
+		'as'=>'themnhanvien',
+		'uses'=>'NhanVienController@getThemNhanVien'
+	]);
+	Route::post('themnhanvien',[
+		'as'=>'themnhanvien',
+		'uses'=>'NhanVienController@postThemNhanVien'
+	]);
+	Route::get('suanhanvien',[
+		'as'=>'themnhanvien',
+		'uses'=>'NhanVienController@getSuaNhanVien'
+	]);
+});
 Route::get('index',[
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
 ]);
-Route::get('nhanvien',[
-	'as'=>'nhan-vien',
-	'uses'=>'PageController@getNhanVien'
-]);
-Route::get('profile',[
-	'as'=>'profile',
-	'uses'=>'PageController@getProfile'
-]);
-Route::get('themnhanvien',[
-	'as'=>'themnhanvien',
-	'uses'=>'PageController@getThemNhanVien'
-]);
+
 
 //auth
 Route::get('dangnhap',[
@@ -37,3 +48,7 @@ Route::get('dangnhap',[
 	'uses'=>'PageController@getDangNhap'
 ]);
 Route::post('dangnhap','AuthController@login')->name('login');
+Route::get('test',function(){
+	$data = App\nhanvien::find('1')->chucvu->tencv;
+	var_dump($data); 
+});
